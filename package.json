@@ -5,12 +5,17 @@
   "scripts": {},
   "private": true,
   "dependencies": {
+    "@apollo/server": "^5.5.2",
+    "@as-integrations/express5": "^1.1.2",
+    "@nestjs/apollo": "^13.4.5",
     "@nestjs/common": "^11.0.0",
     "@nestjs/core": "^11.0.0",
+    "@nestjs/graphql": "^13.4.5",
     "@nestjs/platform-express": "^11.0.0",
     "@prisma/client": "^7.10.1",
     "axios": "^1.6.0",
     "dotenv": "^18.0.10",
+    "graphql": "^16.15.0",
     "prisma": "^7.10.1",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.0"
