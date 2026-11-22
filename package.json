@@ -9,6 +9,7 @@
     "@nestjs/config": "^12.1.1",
     "@nx/js": "24.0.6",
     "@swc/helpers": "~0.5.18",
+    "@types/node": "^22.0.0",
     "nx": "24.0.6",
     "prettier": "~3.6.2",
     "tslib": "^2.3.0",
@@ -16,6 +17,13 @@
   },
   "packageManager": "npm@11.13.0",
   "workspaces": [
-    "packages/*"
-  ]
+    "apps/*",
+    "libs/*"
+  ],
+  "dependencies": {
+    "@apollo/server": "^5.5.2",
+    "@nestjs/apollo": "^14.2.1",
+    "@nestjs/graphql": "^14.2.1",
+    "graphql": "^16.15.0"
+  }
 }
