@@ -13,7 +13,7 @@ export class UsersService {
   ) {}
 
   async createUser(data: Prisma.UserCreateInput) {
-    return this.prismaService.user.create({
+    return await this.prismaService.user.create({
       data: {
         email: data.email,
         password: await this.hashingService.hash(data.password),
@@ -22,8 +22,12 @@ export class UsersService {
   }
 
   async findAll() {
-    return this.prismaService.user.findMany({
+    return await this.prismaService.user.findMany({
       select: { id: true, email: true },
     });
+  }
+
+  async getUser(args: Prisma.UserWhereUniqueInput) {
+    return await this.prismaService.user.findUniqueOrThrow({ where: args });
   }
 }
