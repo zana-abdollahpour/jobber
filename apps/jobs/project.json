@@ -1,0 +1,35 @@
+{
+  "name": "jobs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/jobs/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build", "generate-prisma-types"],
+      "options": {
+        "command": "npx nest build",
+        "cwd": "apps/jobs"
+      }
+    },
+    "test": {
+      "dependsOn": ["generate-prisma-types"]
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["^build"],
+      "options": {
+        "command": "npx nest start --watch",
+        "cwd": "apps/jobs"
+      }
+    },
+    "generate-prisma-types": {
+      "command": "prisma generate",
+      "options": { "cwd": "apps/jobs" }
+    },
+    "migrate-prisma": {
+      "command": "prisma migrate dev",
+      "options": { "cwd": "apps/jobs" }
+    }
+  }
+}
