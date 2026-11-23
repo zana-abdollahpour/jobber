@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AuthenticationResolver } from './authentication.resolver';
 import { AuthenticationService } from './authentication.service';
+import { UsersModule } from '../../users/users.module';
+import { HashingModule } from '../hashing/hashing.module';
 
 @Module({
   imports: [
@@ -17,6 +19,8 @@ import { AuthenticationService } from './authentication.service';
         },
       }),
     }),
+    HashingModule,
+    UsersModule,
   ],
   providers: [AuthenticationResolver, AuthenticationService],
 })
