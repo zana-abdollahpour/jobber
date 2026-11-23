@@ -1,9 +1,10 @@
 import { DiscoveryService } from '@nestjs/core';
 import { InstanceWrapper } from '@nestjs/core/internal';
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { BadRequestException, Injectable, OnModuleInit } from '@nestjs/common';
 
-import { JOB_METADATA_KEY } from '../decorators/job.decorator';
+import { JobMetadataDecorator } from '../decorators/job.decorator';
 import { JobMetadata } from '../interfaces/job-metadata.interface';
+import { AbstractJob } from '../interfaces/job.abstract';
 
 interface DiscoveredJob {
   wrapper: InstanceWrapper;
@@ -17,19 +18,32 @@ export class JobsService implements OnModuleInit {
   constructor(private readonly discoveryService: DiscoveryService) {}
 
   async onModuleInit() {
-    const allProviders = this.discoveryService.getProviders();
+    const wrappers = this.discoveryService.getProviders({
+      metadataKey: JobMetadataDecorator.KEY,
+    });
 
-    this.jobs = allProviders
-      .filter((wrapper) => {
-        const { metatype } = wrapper;
-        return metatype && Reflect.getMetadata(JOB_METADATA_KEY, metatype);
-      })
-      .map((wrapper) => ({
+    this.jobs = wrappers.map((wrapper) => ({
+      wrapper: wrapper,
+      meta: this.discoveryService.getMetadataByDecorator(
+        JobMetadataDecorator,
         wrapper,
-        meta: Reflect.getMetadata(
-          JOB_METADATA_KEY,
-          wrapper.metatype!,
-        ) as JobMetadata,
-      }));
+      ) as JobMetadata,
+    }));
+  }
+
+  async executeJob(name: string) {
+    const job = this.jobs.find((job) => job.meta.name === name);
+
+    if (!job) {
+      throw new BadRequestException(`Job '${name}' does not exist`);
+    }
+
+    await (job.wrapper.instance as AbstractJob).execute();
+
+    return job.meta;
+  }
+
+  getJobs() {
+    return this.jobs.map((job) => job.meta);
   }
 }
