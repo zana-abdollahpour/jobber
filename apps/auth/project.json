@@ -12,6 +12,9 @@
         "cwd": "apps/auth"
       }
     },
+    "test": {
+      "dependsOn": ["generate-prisma-types"]
+    },
     "serve": {
       "executor": "nx:run-commands",
       "options": {
