@@ -10,7 +10,7 @@ import { UsersModule } from './users/users.module';
 import { HashingModule } from './iam/hashing/hashing.module';
 import { AuthenticationModule } from './iam/authentication/authentication.module';
 
-import { AuthController } from './auth.controller';
+import { AuthController } from './iam/authentication/authentication.controller';
 
 @Module({
   imports: [
