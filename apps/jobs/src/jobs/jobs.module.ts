@@ -1,4 +1,6 @@
+import { join } from 'node:path';
 import { Module } from '@nestjs/common';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 import { DiscoveryModule } from '@nestjs/core';
 
 import { JobsService } from './jobs.service';
@@ -6,7 +8,19 @@ import { FibonacciJob } from './fibonacci.job';
 import { JobsResolver } from './jobs.resolver';
 
 @Module({
-  imports: [DiscoveryModule],
+  imports: [
+    DiscoveryModule,
+    ClientsModule.register([
+      {
+        name: 'auth',
+        transport: Transport.GRPC,
+        options: {
+          package: 'auth',
+          protoPath: join(__dirname, '../../..', 'proto/auth.proto'),
+        },
+      },
+    ]),
+  ],
   providers: [JobsResolver, JobsService, FibonacciJob],
 })
 export class JobsModule {}

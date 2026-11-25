@@ -10,6 +10,8 @@ import { UsersModule } from './users/users.module';
 import { HashingModule } from './iam/hashing/hashing.module';
 import { AuthenticationModule } from './iam/authentication/authentication.module';
 
+import { AuthController } from './auth.controller';
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -23,5 +25,6 @@ import { AuthenticationModule } from './iam/authentication/authentication.module
     HashingModule,
     AuthenticationModule,
   ],
+  controllers: [AuthController],
 })
 export class AppModule {}
