@@ -1,10 +1,15 @@
 import { DiscoveryService } from '@nestjs/core';
 import { InstanceWrapper } from '@nestjs/core/internal';
-import { BadRequestException, Injectable, OnModuleInit } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  OnModuleInit,
+} from '@nestjs/common';
 
-import { JobMetadataDecorator } from '../decorators/job.decorator';
-import { JobMetadata } from '../interfaces/job-metadata.interface';
-import { AbstractJob } from '../interfaces/job.abstract';
+import { JobMetadataDecorator } from './decorators/job.decorator';
+import { JobMetadata } from './interfaces/job-metadata.interface';
+import { AbstractJob } from './jobs/job.abstract';
 
 interface DiscoveredJob {
   wrapper: InstanceWrapper;
@@ -38,7 +43,13 @@ export class JobsService implements OnModuleInit {
       throw new BadRequestException(`Job '${name}' does not exist`);
     }
 
-    await (job.wrapper.instance as AbstractJob).execute();
+    if (!(job.wrapper.instance instanceof AbstractJob)) {
+      throw new InternalServerErrorException(
+        'Job is not an instance of AbstractJob',
+      );
+    }
+
+    await job.wrapper.instance.execute({}, job.meta.name);
 
     return job.meta;
   }

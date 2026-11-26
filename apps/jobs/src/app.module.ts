@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
-import { JobsModule } from './jobs/jobs.module';
+import { JobsModule } from './jobs.module';
 
 @Module({
   imports: [
