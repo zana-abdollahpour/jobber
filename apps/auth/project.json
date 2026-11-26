@@ -36,7 +36,7 @@
       "options": { "cwd": "{projectRoot}" }
     },
     "generate-ts-proto": {
-      "command": "nx generate-ts-proto"
+      "command": "nx generate-ts-proto && nx build proto-types"
     }
   }
 }

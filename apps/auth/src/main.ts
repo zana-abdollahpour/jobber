@@ -1,4 +1,3 @@
-import { join } from 'node:path';
 import { NestFactory } from '@nestjs/core';
 import { ConfigService } from '@nestjs/config';
 import { ValidationPipe } from '@nestjs/common';
@@ -19,7 +18,7 @@ async function bootstrap() {
     transport: Transport.GRPC,
     options: {
       package: 'auth',
-      protoPath: join(__dirname, '../../..', 'proto/auth.proto'),
+      protoPath: require.resolve('@jobber/proto/auth.proto'),
     },
   });
 

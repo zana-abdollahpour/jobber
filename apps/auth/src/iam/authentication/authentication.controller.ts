@@ -6,7 +6,7 @@ import {
   AuthServiceController,
   AuthServiceControllerMethods,
   type AuthenticateRequest,
-} from '../../../../../types/proto/auth';
+} from '@jobber/proto-types/proto/auth';
 
 import { UsersService } from '../../users/users.service';
 

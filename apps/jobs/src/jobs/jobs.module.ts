@@ -1,4 +1,3 @@
-import { join } from 'node:path';
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { DiscoveryModule } from '@nestjs/core';
@@ -16,7 +15,7 @@ import { JobsResolver } from './jobs.resolver';
         transport: Transport.GRPC,
         options: {
           package: 'auth',
-          protoPath: join(__dirname, '../../..', 'proto/auth.proto'),
+          protoPath: require.resolve('@jobber/proto/auth.proto'),
         },
       },
     ]),

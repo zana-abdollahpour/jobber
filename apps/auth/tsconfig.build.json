@@ -8,6 +8,9 @@
   "references": [
     {
       "path": "../../libs/nestjs/tsconfig.lib.json"
+    },
+    {
+      "path": "../../libs/proto-types"
     }
   ]
 }
