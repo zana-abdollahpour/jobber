@@ -8,6 +8,9 @@
     },
     {
       "path": "./libs/proto-types"
+    },
+    {
+      "path": "./libs/pulsar"
     }
   ]
 }
