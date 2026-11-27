@@ -25,6 +25,9 @@
       "path": "../../libs/nestjs"
     },
     {
+      "path": "../../libs/graphql"
+    },
+    {
       "path": "../../libs/pulsar"
     }
   ]

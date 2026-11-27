@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 
-import { GqlContext } from '@jobber/nestjs';
+import { GqlContext } from '@jobber/graphql';
 import { UsersService } from '../../users/users.service';
 import { HashingService } from '../hashing/hashing.service';
 

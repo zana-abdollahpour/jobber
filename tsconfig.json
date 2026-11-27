@@ -11,6 +11,12 @@
     },
     {
       "path": "./libs/pulsar"
+    },
+    {
+      "path": "./apps/executor"
+    },
+    {
+      "path": "./libs/graphql"
     }
   ]
 }

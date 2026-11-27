@@ -16,7 +16,6 @@
     }
   },
   "dependencies": {
-    "@jobber/proto-types": "*",
     "tslib": "^2.3.0"
   }
 }
