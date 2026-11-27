@@ -9,7 +9,6 @@ export class ExecuteJobInput {
   name: string;
 
   @Field(() => GraphQLJSON)
-  @IsObject()
   @IsNotEmpty()
-  data: object;
+  data: object | object[];
 }

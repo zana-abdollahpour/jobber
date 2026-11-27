@@ -17,6 +17,10 @@ export abstract class AbstractJob<TData extends object>
     await this.producer.close();
   }
 
+  private async send(data: TData) {
+    await this.producer.send({ data: serialize(data) });
+  }
+
   private async validateData(data: TData) {
     const errors = await validate(plainToInstance(this.messageClass, data));
     if (errors.length) {
@@ -33,6 +37,10 @@ export abstract class AbstractJob<TData extends object>
       this.producer = await this.pulsarClient.createProducer(job);
     }
 
-    await this.producer.send({ data: serialize(data) });
+    if (Array.isArray(data)) {
+      await Promise.allSettled(data.map((msg) => this.send(msg)));
+    } else {
+      await this.send(data);
+    }
   }
 }
