@@ -1,7 +1,7 @@
 import { OnModuleDestroy } from '@nestjs/common';
 import { Producer } from 'pulsar-client';
 
-import { PulsarClient } from '@jobber/pulsar';
+import { PulsarClient, serialize } from '@jobber/pulsar';
 
 export abstract class AbstractJob<TData extends object>
   implements OnModuleDestroy
@@ -18,6 +18,6 @@ export abstract class AbstractJob<TData extends object>
     if (!this.producer) {
       this.producer = await this.pulsarClient.createProducer(job);
     }
-    await this.producer.send({ data: Buffer.from(JSON.stringify(data)) });
+    await this.producer.send({ data: serialize(data) });
   }
 }
