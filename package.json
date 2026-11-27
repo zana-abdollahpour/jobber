@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
+    "start": "nx run-many -t serve -p auth jobs executor",
     "generate-ts-proto": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto.cmd --proto_path=./libs --ts_proto_out=./libs/proto-types ./libs/proto/*.proto --ts_proto_opt=nestJs=true --ts_proto_opt=exportCommonSymbols=false"
   },
   "nx": {
@@ -45,6 +46,7 @@
     "@nestjs/jwt": "^12.0.5",
     "@nestjs/microservices": "^12.6.0",
     "graphql": "^16.15.0",
+    "graphql-type-json": "^0.3.2",
     "pulsar-client": "^1.18.0",
     "ts-proto": "^2.23.8"
   }
