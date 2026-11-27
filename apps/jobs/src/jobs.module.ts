@@ -17,7 +17,7 @@ import { PulsarModule } from '@jobber/pulsar';
         transport: Transport.GRPC,
         options: {
           package: 'auth',
-          protoPath: require.resolve('@jobber/proto/auth.proto'),
+          protoPath: require.resolve('@jobber/grpc/auth.proto'),
         },
       },
     ]),

@@ -4,18 +4,7 @@
   "license": "MIT",
   "scripts": {
     "prepare": "husky",
-    "start": "nx run-many -t serve -p auth jobs executor",
-    "generate-ts-proto": "protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto.cmd --proto_path=./libs --ts_proto_out=./libs/proto-types ./libs/proto/*.proto --ts_proto_opt=nestJs=true --ts_proto_opt=exportCommonSymbols=false"
-  },
-  "nx": {
-    "targets": {
-      "generate-ts-proto": {
-        "cache": true,
-        "inputs": [
-          "{workspaceRoot}/libs/proto/*.proto"
-        ]
-      }
-    }
+    "start": "nx run-many -t serve -p auth jobs executor"
   },
   "private": true,
   "devDependencies": {

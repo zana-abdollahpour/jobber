@@ -7,7 +7,7 @@
   "exclude": ["node_modules", "test", "dist", "**/*spec.ts"],
   "references": [
     {
-      "path": "../../libs/graphql/tsconfig.lib.json"
+      "path": "../../libs/nestjs/tsconfig.lib.json"
     },
     {
       "path": "../../libs/pulsar/tsconfig.lib.json"

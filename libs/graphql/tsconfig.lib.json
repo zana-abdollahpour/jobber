@@ -13,9 +13,5 @@
     "useDefineForClassFields": false
   },
   "include": ["src/**/*.ts"],
-  "references": [
-    {
-      "path": "../proto-types"
-    }
-  ]
+  "references": []
 }

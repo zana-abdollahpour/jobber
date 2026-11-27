@@ -9,7 +9,7 @@ import {
 import { Observable, catchError, map, of } from 'rxjs';
 import type { ClientGrpc } from '@nestjs/microservices';
 
-import { AuthServiceClient } from '@jobber/proto-types/proto/auth';
+import { AuthServiceClient } from '@jobber/grpc-types/proto/auth';
 import { GqlExecutionContext } from '@nestjs/graphql';
 
 @Injectable()

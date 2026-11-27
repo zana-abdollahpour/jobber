@@ -6,7 +6,7 @@ import {
   AuthServiceController,
   AuthServiceControllerMethods,
   type AuthenticateRequest,
-} from '@jobber/proto-types/proto/auth';
+} from '@jobber/grpc-types/proto/auth';
 
 import { UsersService } from '../../users/users.service';
 
