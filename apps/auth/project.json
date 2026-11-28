@@ -34,9 +34,6 @@
     "migrate-prisma": {
       "command": "prisma migrate dev",
       "options": { "cwd": "{projectRoot}" }
-    },
-    "generate-ts-proto": {
-      "command": "nx generate-ts-proto && nx build proto-types"
     }
   }
 }

@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { GrpcOptions, Transport } from '@nestjs/microservices';
 
 import { init } from '@jobber/nestjs';
+import { AUTH_PACKAGE_NAME } from '@jobber/grpc';
 
 import { AppModule } from './app.module';
 
@@ -12,7 +13,7 @@ async function bootstrap() {
   app.connectMicroservice<GrpcOptions>({
     transport: Transport.GRPC,
     options: {
-      package: 'auth',
+      package: AUTH_PACKAGE_NAME,
       protoPath: require.resolve('@jobber/grpc/auth.proto'),
     },
   });
