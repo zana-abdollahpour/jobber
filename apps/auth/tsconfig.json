@@ -3,6 +3,7 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "resolvePackageJsonExports": true,
+    "customConditions": ["@jobber/source"],
     "esModuleInterop": true,
     "isolatedModules": true,
     "declaration": true,

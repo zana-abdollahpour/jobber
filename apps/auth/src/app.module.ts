@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 import { GqlContext } from '@jobber/graphql';
+import { LoggerModule } from '@jobber/nestjs';
 
 import { PrismaModule } from './prisma/prisma.module';
 import { UsersModule } from './users/users.module';
@@ -20,6 +21,7 @@ import { AuthController } from './iam/authentication/authentication.controller';
       context: ({ req, res }: GqlContext) => ({ req, res }),
       autoSchemaFile: true,
     }),
+    LoggerModule,
     PrismaModule,
     UsersModule,
     HashingModule,
