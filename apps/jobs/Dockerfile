@@ -30,6 +30,8 @@ COPY --from=builder /workspace/libs/grpc/package.json ./libs/grpc/
 COPY --from=builder /workspace/libs/nestjs/package.json ./libs/nestjs/
 COPY --from=builder /workspace/libs/pulsar/package.json ./libs/pulsar/
 
+ENV NODE_ENV=production
+
 RUN npm ci --omit=dev
 
 COPY --from=builder /workspace/dist ./dist
